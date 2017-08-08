@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ÁĞ±í¼àÌı
+ * åˆ—è¡¨ç›‘å¬
  * Created by cocky on 17-6-8.
  */
 public class ListService {
@@ -28,14 +28,14 @@ public class ListService {
 
             server=new ServerSocket(5003);
         }catch(Exception e){
-            System.out.println("ÁĞ±í·şÎñ³õÊ¼»¯Ê§°Ü£¡");
+            System.out.println("åˆ—è¡¨æœåŠ¡åˆå§‹åŒ–å¤±è´¥ï¼");
             throw e;
         }
     }
 
     public void start() throws Exception{
         try{
-            System.out.print("ÁĞ±í·şÎñÒÑÆô¶¯. ");
+            System.out.print("åˆ—è¡¨æœåŠ¡å·²å¯åŠ¨. ");
             for(int i=0;i*1000<5000;i++){
                 System.out.print(". ");
                 Thread.sleep(i*500)	;
@@ -48,17 +48,17 @@ public class ListService {
                 t.start();
             }
         }catch(Exception e){
-            System.out.println("ÁĞ±í·şÎñ×¢²áÊ§°Ü£¡");
+            System.out.println("åˆ—è¡¨æœåŠ¡æ³¨å†Œå¤±è´¥ï¼");
             throw e;
         }
     }
     public static void main(String[] args) {
         try{
-            //Í¨ĞÅ·şÎñ
+            //é€šä¿¡æœåŠ¡
             ListService server=new ListService();
             server.start();
         }catch(Exception e){
-            System.out.println("ÁĞ±í·şÎñÆô¶¯Ê§°Ü£¡");
+            System.out.println("åˆ—è¡¨æœåŠ¡å¯åŠ¨å¤±è´¥ï¼");
             e.printStackTrace();
         }
     }
@@ -71,7 +71,7 @@ public class ListService {
         }
         public void run() {
             try{
-                System.out.println("ÁĞ±íÇëÇó");
+                System.out.println("åˆ—è¡¨è¯·æ±‚");
 
                 OutputStream out=socket.getOutputStream();
                 OutputStreamWriter osw=new OutputStreamWriter(out,"UTF-8");
@@ -81,26 +81,26 @@ public class ListService {
                 InputStreamReader isr=new InputStreamReader(in,"UTF-8");
                 BufferedReader br=new BufferedReader(isr);
                 String message=br.readLine();
-                //Çø·ÖÁĞ±íÊÇÔöÊÇ¼õ
+                //åŒºåˆ†åˆ—è¡¨æ˜¯å¢æ˜¯å‡
                 if(message.substring(0,1).equals("+")){
-                    //TODO ²éÑ¯list£¬Èç¹ûÒÑ´æÔÚ´ËÓÃ»§£¬Ôò²»addData£¨ÖØ¸´µÇÂ½£©
+                    //TODO æŸ¥è¯¢listï¼Œå¦‚æœå·²å­˜åœ¨æ­¤ç”¨æˆ·ï¼Œåˆ™ä¸addDataï¼ˆé‡å¤ç™»é™†ï¼‰
                     addData(message.substring(1));
-                    System.out.println("ÉÏÏßÍ¨Öª");//
+                    System.out.println("ä¸Šçº¿é€šçŸ¥");//
                 }else if(message.substring(0,1).equals("-")){
                     delData(message.substring(1));
-                    System.out.println("ÏÂÏßÍ¨Öª");
+                    System.out.println("ä¸‹çº¿é€šçŸ¥");
                 }else{
                     pw.println("wrong");
-                    System.out.println("´íÎóÍ¨Öª,´íÎóĞÅÏ¢£º"+message);//
+                    System.out.println("é”™è¯¯é€šçŸ¥,é”™è¯¯ä¿¡æ¯ï¼š"+message);//
                     return;
                 }
-                //Æ´×Ö·û´®·µ»Ø
+                //æ‹¼å­—ç¬¦ä¸²è¿”å›
                 pw.println(appendLine());
-                System.out.println("·µ»ØµÄÁĞ±í´®:"+appendLine());
+                System.out.println("è¿”å›çš„åˆ—è¡¨ä¸²:"+appendLine());
                 socket.close();
             }catch(Exception e){
             }finally{
-                System.out.println("ÁĞ±íÒÑË¢ĞÂ\n");
+                System.out.println("åˆ—è¡¨å·²åˆ·æ–°\n");
                 try{
                     socket.close();
                 }catch(Exception e2){
@@ -109,7 +109,7 @@ public class ListService {
         }
     }
 
-    //Æ´line
+    //æ‹¼line
     private String appendLine() {
         String line = null;
         String lines = "";
@@ -121,13 +121,13 @@ public class ListService {
                 lines=lines+line+";";
             }
         } catch (Exception e) {
-            System.out.print("¶ÁÈ¡ÁĞ±íÊ§°Ü");
+            System.out.print("è¯»å–åˆ—è¡¨å¤±è´¥");
             pw.print("wrong");
         }
         return lines;
     }
 
-    //É¾³ıĞĞ
+    //åˆ é™¤è¡Œ
     public void delData(String name) throws IOException{
 
         FileInputStream fis=new FileInputStream("list.txt");
@@ -152,7 +152,7 @@ public class ListService {
         fos.close();
     }
 
-    //ĞÂÔöĞĞ
+    //æ–°å¢è¡Œ
     public void addData(String name) throws IOException{
         String line="\n"+name;
         FileOutputStream fos=new FileOutputStream("list.txt",true);

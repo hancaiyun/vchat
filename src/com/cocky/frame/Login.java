@@ -42,108 +42,108 @@ public class Login {
 	public boolean isConnected;
 
 	public Login(){
-		IP="192.168.138.31";//·şÎñÆ÷IP
-		Port=5001;//·şÎñ¶Ë¿ÚºÅ
+		IP="192.168.138.31";//æœåŠ¡å™¨IP
+		Port=5001;//æœåŠ¡ç«¯å£å·
 		pw=null;
-		mes=null; 
+		mes=null;
 		isConnected=false;
 		frame=new JFrame("VChat-1.6.1");
-		userName=new JLabel("ÓÃ»§Ãû");
-		passWord=new JLabel(" ÃÜ Âë   ");
+		userName=new JLabel("ç”¨æˆ·å");
+		passWord=new JLabel(" å¯† ç    ");
 		pwd=new JPasswordField(20);
-		pwd.setText("123");//¿ÉÈ¥
+		pwd.setText("123");//å¯å»
 		name=new JTextField(20);
-		name.setText("COCKY");//¿ÉÈ¥
-		login=new JButton("µÇÂ½");
-		register=new JButton("×¢²á");
-		
-		sIp=new JLabel("·şÎñÆ÷IP");
+		name.setText("COCKY");//å¯å»
+		login=new JButton("ç™»é™†");
+		register=new JButton("æ³¨å†Œ");
+
+		sIp=new JLabel("æœåŠ¡å™¨IP");
 		serviceIp=new JTextField(20);
 		init();
-		//ÃÜÂëÊäÈë¿ò¼àÌıEnter£¬×÷ÓÃµÈÍ¬ÓÚ¡°µÇÂ½¡±°´Å¥
-		serviceIp.addKeyListener(new KeyAdapter()  {	//¼üÅÌ¼àÌıENTER
+		//å¯†ç è¾“å…¥æ¡†ç›‘å¬Enterï¼Œä½œç”¨ç­‰åŒäºâ€œç™»é™†â€æŒ‰é’®
+		serviceIp.addKeyListener(new KeyAdapter()  {	//é”®ç›˜ç›‘å¬ENTER
 			public void keyReleased(KeyEvent e) {
-				if(e.getKeyCode()==KeyEvent.VK_ENTER){//Í¬Ê±°´SHIFT+ENTER·¢ËÍÏûÏ¢ //
+				if(e.getKeyCode()==KeyEvent.VK_ENTER){//åŒæ—¶æŒ‰SHIFT+ENTERå‘é€æ¶ˆæ¯ //
 					try {
 						login();
 					} catch (Exception e1) {
 						JOptionPane.showMessageDialog(null, "ERROR");
 					}
 				}
-			}    
+			}
 		});
 		addEvent();
 	}
 	private void login(){
-		//TODO ÕâÀï¿ØÖÆ²»ÁËÃâÖØ¸´Á¬½Ó£¬ÒòÎªµÇÂ½³É¹¦ºó¾ÍÒÑ¾­Ìø×ª¶Ô»°¿òÁË
-		if (isConnected) {  
-            JOptionPane.showMessageDialog(null, "ÒÑ´¦ÓÚÁ¬½ÓÉÏ×´Ì¬£¬²»ÒªÖØ¸´Á¬½Ó!",  
-                    "´íÎó", JOptionPane.ERROR_MESSAGE);  
-            return;
-        } 
+		//TODO è¿™é‡Œæ§åˆ¶ä¸äº†å…é‡å¤è¿æ¥ï¼Œå› ä¸ºç™»é™†æˆåŠŸåå°±å·²ç»è·³è½¬å¯¹è¯æ¡†äº†
+		if (isConnected) {
+			JOptionPane.showMessageDialog(null, "å·²å¤„äºè¿æ¥ä¸ŠçŠ¶æ€ï¼Œä¸è¦é‡å¤è¿æ¥!",
+					"é”™è¯¯", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
 		p1=new String(name.getText());
 		p2=new String(pwd.getPassword());
-		//ÏÈ¼ì²éÓÃ»§Ãû»òÕßÃÜÂëÊÇ·ñÎª¿Õ
+		//å…ˆæ£€æŸ¥ç”¨æˆ·åæˆ–è€…å¯†ç æ˜¯å¦ä¸ºç©º
 		if((p1.equals(""))||(p2.equals(""))){
-			JOptionPane.showMessageDialog(null, "ÓÃ»§Ãû»òÕßÃÜÂë²»ÄÜÎª¿Õ","´íÎó", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "ç”¨æˆ·åæˆ–è€…å¯†ç ä¸èƒ½ä¸ºç©º","é”™è¯¯", JOptionPane.ERROR_MESSAGE);
 		}
 //		else if(serviceIp.getText().equals("")){
-//			JOptionPane.showMessageDialog(null, "ÇëÌîĞ´ÕıÈ·µÄ·şÎñÆ÷IP","´íÎó", JOptionPane.ERROR_MESSAGE);}
-        else{
-		//µ÷Êı¾İ¿â²é¿´ÓÃ»§ÃûºÍÃÜÂëÊÇ·ñÕıÈ·
+//			JOptionPane.showMessageDialog(null, "è¯·å¡«å†™æ­£ç¡®çš„æœåŠ¡å™¨IP","é”™è¯¯", JOptionPane.ERROR_MESSAGE);}
+		else{
+			//è°ƒæ•°æ®åº“æŸ¥çœ‹ç”¨æˆ·åå’Œå¯†ç æ˜¯å¦æ­£ç¡®
 			try {
 				//IP=new String(serviceIp.getText());
 				socket1=new Socket(IP,Port);
-				//·¢ËÍNAMEºÍPASSWORD
+				//å‘é€NAMEå’ŒPASSWORD
 				OutputStream out=socket1.getOutputStream();
 				OutputStreamWriter osw=new OutputStreamWriter(out,"UTF-8");
 				pw=new PrintWriter(osw,true);
 				pw.println(p1+";"+p2);
-				//½ÓÊÕ·µ»ØĞÅÏ¢
+				//æ¥æ”¶è¿”å›ä¿¡æ¯
 				BufferedReader br=new BufferedReader(new InputStreamReader(socket1.getInputStream(),"UTF-8"));
 				while((mes=br.readLine())!="OK"){
 					if(mes.equals("wrong name")){
-						JOptionPane.showMessageDialog(null, "ÓÃ»§Ãû²»´æÔÚ£¡","´íÎó", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(null, "ç”¨æˆ·åä¸å­˜åœ¨ï¼","é”™è¯¯", JOptionPane.ERROR_MESSAGE);
 						name.setText(null);
 						pwd.setText(null);
 						return;
 					}else if(mes.equals("wrong password")){
-						JOptionPane.showMessageDialog(null, "ÃÜÂë´íÎó£¡","´íÎó", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(null, "å¯†ç é”™è¯¯ï¼","é”™è¯¯", JOptionPane.ERROR_MESSAGE);
 						pwd.setText(null);
 						return;
-					}else{		
-						try{	
+					}else{
+						try{
 							socket=new Socket(IP,5000);
 							isConnected=true;
 							frame.dispose();
-							//½¨Á¢Á¬½Óºó¹Ø±ÕLogin´°¿Ú¿ªÆôChat´°¿Ú¿ªÊ¼¶Ô»°
+							//å»ºç«‹è¿æ¥åå…³é—­Loginçª—å£å¼€å¯Chatçª—å£å¼€å§‹å¯¹è¯
 							cf=new ChatFrame(socket,name.getText(),IP);
-							return;//Ìø³ö¼àÌıÊÂ¼ş½áÊøµ±Ç°·½·¨
+							return;//è·³å‡ºç›‘å¬äº‹ä»¶ç»“æŸå½“å‰æ–¹æ³•
 						}catch(Exception e1){
-							JOptionPane.showMessageDialog(null, "ÎŞ·¨Á¬½Ó·şÎñÆ÷£¬µÇÂ½Ê§°Ü");
+							JOptionPane.showMessageDialog(null, "æ— æ³•è¿æ¥æœåŠ¡å™¨ï¼Œç™»é™†å¤±è´¥");
 							return;
-						}	
+						}
 					}
-				 }
-			 } catch (Exception e2) {
+				}
+			} catch (Exception e2) {
 				e2.printStackTrace();
-				System.out.println("Á¬½ÓÊ§°Ü£¡");
-				JOptionPane.showMessageDialog(null, "ÎŞ·¨Á¬½Ó·şÎñÆ÷!");
+				System.out.println("è¿æ¥å¤±è´¥ï¼");
+				JOptionPane.showMessageDialog(null, "æ— æ³•è¿æ¥æœåŠ¡å™¨!");
 			}
-	}
+		}
 	}
 	private void addEvent() {
-		//µÇÂ¼°´Å¥¼àÌıÊÂ¼ş
+		//ç™»å½•æŒ‰é’®ç›‘å¬äº‹ä»¶
 		login.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			    login();
-			}           
+				login();
+			}
 		});
-		//×¢²á°´Å¥ÊÂ¼ş
+		//æ³¨å†ŒæŒ‰é’®äº‹ä»¶
 		register.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(serviceIp.getText().equals("")){
-					JOptionPane.showMessageDialog(null, "ÇëÌîĞ´·şÎñÆ÷IP","´íÎó", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "è¯·å¡«å†™æœåŠ¡å™¨IP","é”™è¯¯", JOptionPane.ERROR_MESSAGE);
 				}else{
 					new RegisterFrame(serviceIp.getText());
 					frame.dispose();
@@ -160,16 +160,16 @@ public class Login {
 		JPanel jp3=new JPanel(new FlowLayout());
 		jp3.add(passWord);
 		jp3.add(pwd);
-		
+
 		JPanel jp5=new JPanel(new FlowLayout());
 		jp5.add(sIp);
 		jp5.add(serviceIp);
-		
+
 		JPanel jp4=new JPanel(new FlowLayout());
 		jp4.add(login);
 		jp4.add(register);
-		
-		frame.setIconImage(Toolkit.getDefaultToolkit().createImage(Login.class.getResource("5.png"))); 
+
+		frame.setIconImage(Toolkit.getDefaultToolkit().createImage(Login.class.getResource("5.png")));
 		frame.setLayout(new GridLayout(5, 1));//(5,1)
 		frame.add(jp1);
 		frame.add(jp2);

@@ -10,47 +10,47 @@ import java.util.List;
 import javax.swing.JTextArea;
 
 /**
- * ÁÄÌìÊÒ·şÎñÆ÷¶Ë
+ * èŠå¤©å®¤æœåŠ¡å™¨ç«¯
  * @author Administrator
  */
 public class ChatService{
     public static  JTextArea showText;
     /*
-     * ÔËĞĞÔÚ·şÎñÆ÷¶ËµÃServerSocketÓÃÓÚ´ò¿ª·şÎñ¶Ë¿Ú£¬²¢¼àÌı¸Ã¶Ë¿Ú
-     * £¬ÓëÍ¨¹ı¸Ã¶Ë¿ÚÁ¬½ÓµÄ·şÎñ¶Ë½øĞĞÍ¨Ñ¶¡£
+     * è¿è¡Œåœ¨æœåŠ¡å™¨ç«¯å¾—ServerSocketç”¨äºæ‰“å¼€æœåŠ¡ç«¯å£ï¼Œå¹¶ç›‘å¬è¯¥ç«¯å£
+     * ï¼Œä¸é€šè¿‡è¯¥ç«¯å£è¿æ¥çš„æœåŠ¡ç«¯è¿›è¡Œé€šè®¯ã€‚
      */
     private ServerSocket server;
     /*
-     * ¹²Ïí¼¯ºÏ£¬ÓÃÓÚ±£´æËùÓĞ¿Í»§¶ËµÄÊä³öÁ÷
-     * ±ãÓÚ½«ÏûÏ¢¹ã²¥½oËùÓĞ¿Í»§¶Ë
+     * å…±äº«é›†åˆï¼Œç”¨äºä¿å­˜æ‰€æœ‰å®¢æˆ·ç«¯çš„è¾“å‡ºæµ
+     * ä¾¿äºå°†æ¶ˆæ¯å¹¿æ’­çµ¦æ‰€æœ‰å®¢æˆ·ç«¯
      */
     private List<PrintWriter> allOut;
 
-    // ÓÃÓÚ´æ´¢Á¬½Óµ½·şÎñÆ÷µÄÓÃ»§ºÍ¿Í»§¶ËÌ×½Ó×Ö¶ÔÏó
+    // ç”¨äºå­˜å‚¨è¿æ¥åˆ°æœåŠ¡å™¨çš„ç”¨æˆ·å’Œå®¢æˆ·ç«¯å¥—æ¥å­—å¯¹è±¡
     //private Hashtable<String, Socket> map = new Hashtable<String, Socket>();
 
     public ChatService() throws Exception{
         try{
 			/*
-			 * ³õÊ¼»¯ServerSocket
-			 * ³õÊ¼»¯Ê±ÒªÓĞÖ¸¶¨·şÎñ¶Ë¿Ú£¬¿Í»§¶Ë
-			 * ¾ÍÊÇÍ¨¹ı¸Ã¶Ë¿ÚÁ¬½Óµ½·şÎñ¶ËµÄ
+			 * åˆå§‹åŒ–ServerSocket
+			 * åˆå§‹åŒ–æ—¶è¦æœ‰æŒ‡å®šæœåŠ¡ç«¯å£ï¼Œå®¢æˆ·ç«¯
+			 * å°±æ˜¯é€šè¿‡è¯¥ç«¯å£è¿æ¥åˆ°æœåŠ¡ç«¯çš„
 			 */
             allOut=new ArrayList<PrintWriter>();
             server=new ServerSocket(5000);
         }catch(Exception e){
-            System.out.println("·şÎñ¶Ë³õÊ¼»¯Ê§°Ü£¡");
+            System.out.println("æœåŠ¡ç«¯åˆå§‹åŒ–å¤±è´¥ï¼");
             throw e;
         }
     }
     private synchronized void addOut(PrintWriter out){
         allOut.add(out);
     }
-    //½«¸ø¶¨µÄÊäÈëÁ÷´Ó¹²Ïí¼¯ºÏÖĞÉ¾³ı
+    //å°†ç»™å®šçš„è¾“å…¥æµä»å…±äº«é›†åˆä¸­åˆ é™¤
     private synchronized void removeOut(PrintWriter out){
         allOut.remove(out);
     }
-    //±éÀú¹²Ïí¼¯ºÏ£¬½«ÏûÏ¢·¢ËÍ¸øÃ¿¸ö¿Í»§¶Ë
+    //éå†å…±äº«é›†åˆï¼Œå°†æ¶ˆæ¯å‘é€ç»™æ¯ä¸ªå®¢æˆ·ç«¯
     private synchronized void sendMessage(String message){
         for(PrintWriter out:allOut){
             out.println(message);
@@ -58,11 +58,11 @@ public class ChatService{
     }
 
     /*
-     * ·şÎñ¶ËµÄÆô¶¯·½·¨
+     * æœåŠ¡ç«¯çš„å¯åŠ¨æ–¹æ³•
      */
     public void start() throws Exception{
         try{
-            System.out.print("·şÎñÆ÷ÒÑÆô¶¯,Õı´ı¿Í»§¶ËÁ¬½Ó. ");
+            System.out.print("æœåŠ¡å™¨å·²å¯åŠ¨,æ­£å¾…å®¢æˆ·ç«¯è¿æ¥. ");
             for(int i=0;i*1000<5000;i++){
                 System.out.print(". ");
                 Thread.sleep(i*500)	;
@@ -76,29 +76,29 @@ public class ChatService{
             }
 			/*
 			 * Socket accept()
-			 * ServerSocketÌá¹©µÄaccept·½·¨¾ÍÊÇÒ»¸ö×èÈû·½·¨£¬¸Ã·½·¨»á
-			 * ¼àÌıÉêÇëµÄ¶Ë¿Ú£¬ÕâÀïÊÇ¡±5000¡°¡£Ö±µ½Ò»¸ö¿Í»§¶ËÍ¨¹ı¸Ã¶Ë
-			 * ¿ÚÁ¬½Ó·şÎñÆ÷Ê±£¬accept·½·¨²Å»á½â³ı×èÈû£¬²¢´´½¨Ò»¸ö Socket
-			 * Óë¸Ã¿Í»§¶Ë½øĞĞÍ¨Ñ¶¡£ÈôÏëÔÙ´Î¼àÌıÆäËû¿Í»§¶ËµÄÁ´½Ó£¬»¹ĞèÒª
-			 * ÔÙ´Îµ÷ÓÃaccept·½·¨£¬²ÅÄÜ¸ĞÖªµ½¡£
+			 * ServerSocketæä¾›çš„acceptæ–¹æ³•å°±æ˜¯ä¸€ä¸ªé˜»å¡æ–¹æ³•ï¼Œè¯¥æ–¹æ³•ä¼š
+			 * ç›‘å¬ç”³è¯·çš„ç«¯å£ï¼Œè¿™é‡Œæ˜¯â€5000â€œã€‚ç›´åˆ°ä¸€ä¸ªå®¢æˆ·ç«¯é€šè¿‡è¯¥ç«¯
+			 * å£è¿æ¥æœåŠ¡å™¨æ—¶ï¼Œacceptæ–¹æ³•æ‰ä¼šè§£é™¤é˜»å¡ï¼Œå¹¶åˆ›å»ºä¸€ä¸ª Socket
+			 * ä¸è¯¥å®¢æˆ·ç«¯è¿›è¡Œé€šè®¯ã€‚è‹¥æƒ³å†æ¬¡ç›‘å¬å…¶ä»–å®¢æˆ·ç«¯çš„é“¾æ¥ï¼Œè¿˜éœ€è¦
+			 * å†æ¬¡è°ƒç”¨acceptæ–¹æ³•ï¼Œæ‰èƒ½æ„ŸçŸ¥åˆ°ã€‚
 			 */
         }catch(Exception e){
-            System.out.println("·şÎñÆ÷ÔËĞĞÊ§°Ü£¡");
+            System.out.println("æœåŠ¡å™¨è¿è¡Œå¤±è´¥ï¼");
             throw e;
         }
     }
     public static void main(String[] args) {
         try{
-            //Í¨ĞÅ·şÎñ
+            //é€šä¿¡æœåŠ¡
             ChatService server=new ChatService();
             server.start();
         }catch(Exception e){
-            System.out.println("·şÎñ¶ËÆô¶¯Ê§°Ü£¡");
+            System.out.println("æœåŠ¡ç«¯å¯åŠ¨å¤±è´¥ï¼");
             e.printStackTrace();
         }
     }
     private class ClientHandler implements Runnable{
-        /*µ±Ç°Ïß³ÌÓë¸ÃSocket¶ÔÓ¦µÄ¿Í»§¶Ë½»»¥
+        /*å½“å‰çº¿ç¨‹ä¸è¯¥Socketå¯¹åº”çš„å®¢æˆ·ç«¯äº¤äº’
          * @see java.lang.Runnable#run()
          */
         private String host1;
@@ -112,19 +112,19 @@ public class ChatService{
         public void run() {
             PrintWriter pw=null;
             try{
-                sendMessage(host1+"/ÉÏÏßÁË");//ÁĞ±í³öÀ´ºóÉ¾µô
-                System.out.println(host1+"/ÉÏÏßÁË");
+                sendMessage(host1+"/ä¸Šçº¿äº†");//åˆ—è¡¨å‡ºæ¥ååˆ æ‰
+                System.out.println(host1+"/ä¸Šçº¿äº†");
 
                 OutputStream out=socket.getOutputStream();
                 OutputStreamWriter osw=new OutputStreamWriter(out,"UTF-8");
                 pw=new PrintWriter(osw,true);
-                //½«ÓÃÓÚÏò¸Ã¿Í»§¶Ë·¢ËÍÏûÏ¢µÄÊä³öÁ÷´æÈë¹²Ïí¼¯ºÏ
+                //å°†ç”¨äºå‘è¯¥å®¢æˆ·ç«¯å‘é€æ¶ˆæ¯çš„è¾“å‡ºæµå­˜å…¥å…±äº«é›†åˆ
                 addOut(pw);
 
 				/*
 				 * InputStream getInpuStream()
-				 * SocketµÄ¸Ã·½·¨ÓÃÀ´»ñÈ¡Ò»¸öÊäÈëÁ÷£¬À´¶ÁÔ¶¶Ë£¨ÕâÀï¾ÍÊÇ¿Í»§¶Ë£©
-				 * ·¢ËÍ¹ıÀ´µÄÊı¾İ
+				 * Socketçš„è¯¥æ–¹æ³•ç”¨æ¥è·å–ä¸€ä¸ªè¾“å…¥æµï¼Œæ¥è¯»è¿œç«¯ï¼ˆè¿™é‡Œå°±æ˜¯å®¢æˆ·ç«¯ï¼‰
+				 * å‘é€è¿‡æ¥çš„æ•°æ®
 				 */
                 InputStream in=socket.getInputStream();
                 InputStreamReader isr=new InputStreamReader(in,"UTF-8");
@@ -132,12 +132,12 @@ public class ChatService{
                 String message=null;
                 while((message=br.readLine())!=null){
 					/*
-					 * Í¨¹ıbr.readLine()¶ÁÈ¡¿Í»§¶Ë·¢ËÍ¹ıÀ´µÄÃ¿Ò»ĞĞ×Ö·û
-					 * ÓÉÓÚ¿Í»§¶Ë×øÔÚµÄÏµÍ³²»Í¬£¬µ±¿Í»§¶ËÓë·şÎñÆ÷¶Ï¿ª
-					 * Á¬½Óºó·şÎñ¶ËµÄÕâ¸ö·½·¨µÄ½á¹ûÊÇ²»Í¬µÄ¡£
-					 * µ±windowsµÄ¿Í»§¶Ë¶Ï¿ªÁ¬½ÓÊ±£¬readLine·½·¨»á
-					 * Ö±½ÓÅ×³öÒì³£¡£
-					 * µ±LinuxµÄ¿Í»§¶Ë¶Ï¿ªÁ¬½Óºó£¬readLine·½·¨»á·µ»Ønull
+					 * é€šè¿‡br.readLine()è¯»å–å®¢æˆ·ç«¯å‘é€è¿‡æ¥çš„æ¯ä¸€è¡Œå­—ç¬¦
+					 * ç”±äºå®¢æˆ·ç«¯ååœ¨çš„ç³»ç»Ÿä¸åŒï¼Œå½“å®¢æˆ·ç«¯ä¸æœåŠ¡å™¨æ–­å¼€
+					 * è¿æ¥åæœåŠ¡ç«¯çš„è¿™ä¸ªæ–¹æ³•çš„ç»“æœæ˜¯ä¸åŒçš„ã€‚
+					 * å½“windowsçš„å®¢æˆ·ç«¯æ–­å¼€è¿æ¥æ—¶ï¼ŒreadLineæ–¹æ³•ä¼š
+					 * ç›´æ¥æŠ›å‡ºå¼‚å¸¸ã€‚
+					 * å½“Linuxçš„å®¢æˆ·ç«¯æ–­å¼€è¿æ¥åï¼ŒreadLineæ–¹æ³•ä¼šè¿”å›null
 					 */
                     int index=message.indexOf(":");
                     host2=message.substring(0,index);
@@ -147,10 +147,10 @@ public class ChatService{
                 }
             }catch(Exception e){
             }finally{
-                sendMessage(host2+"ÏÂÏßÁË");//ÁĞ±í³öÀ´ºóÉ¾µô
+                sendMessage(host2+"ä¸‹çº¿äº†");//åˆ—è¡¨å‡ºæ¥ååˆ æ‰
 
-                System.out.println(host1+"/"+host2+"ÏÂÏßÁË");
-                //½«Êä³öÁ÷´Ó¹²Ïí¼¯ºÏÖĞÉ¾³ı
+                System.out.println(host1+"/"+host2+"ä¸‹çº¿äº†");
+                //å°†è¾“å‡ºæµä»å…±äº«é›†åˆä¸­åˆ é™¤
                 removeOut(pw);
                 try{
                     socket.close();
@@ -160,12 +160,12 @@ public class ChatService{
         }
     }
 
-    //¼ÇÂ¼ÈÕÖ¾
+    //è®°å½•æ—¥å¿—
     private void addChatLog(String message) throws IOException {
-            FileOutputStream fos=new FileOutputStream("chatLog.txt",true);
-            byte[] data=message.getBytes("GBK");
-            fos.write(data);
-            fos.close();
-        }
+        FileOutputStream fos=new FileOutputStream("chatLog.txt",true);
+        byte[] data=message.getBytes("UTF-8");
+        fos.write(data);
+        fos.close();
+    }
 }
 

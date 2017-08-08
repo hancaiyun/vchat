@@ -25,14 +25,14 @@ public class RegistService {
 
             server=new ServerSocket(5002);
         }catch(Exception e){
-            System.out.println("×¢²á·şÎñ¶Ë³õÊ¼»¯Ê§°Ü£¡");
+            System.out.println("æ³¨å†ŒæœåŠ¡ç«¯åˆå§‹åŒ–å¤±è´¥ï¼");
             throw e;
         }
     }
 
     public void start() throws Exception{
         try{
-            System.out.print("×¢²á·şÎñÒÑÆô¶¯. ");
+            System.out.print("æ³¨å†ŒæœåŠ¡å·²å¯åŠ¨. ");
             for(int i=0;i*1000<5000;i++){
                 System.out.print(". ");
                 Thread.sleep(i*500)	;
@@ -45,17 +45,17 @@ public class RegistService {
                 t.start();
             }
         }catch(Exception e){
-            System.out.println("×¢²á·şÎñÆ÷ÔËĞĞÊ§°Ü£¡");
+            System.out.println("æ³¨å†ŒæœåŠ¡å™¨è¿è¡Œå¤±è´¥ï¼");
             throw e;
         }
     }
     public static void main(String[] args) {
         try{
-            //Í¨ĞÅ·şÎñ
+            //é€šä¿¡æœåŠ¡
             RegistService server=new RegistService();
             server.start();
         }catch(Exception e){
-            System.out.println("×¢²á·şÎñ¶ËÆô¶¯Ê§°Ü£¡");
+            System.out.println("æ³¨å†ŒæœåŠ¡ç«¯å¯åŠ¨å¤±è´¥ï¼");
             e.printStackTrace();
         }
     }
@@ -70,7 +70,7 @@ public class RegistService {
         }
         public void run() {
             try{
-                System.out.println(host+"ÇëÇó×¢²á");
+                System.out.println(host+"è¯·æ±‚æ³¨å†Œ");
                 OutputStream out=socket.getOutputStream();
                 OutputStreamWriter osw=new OutputStreamWriter(out,"UTF-8");
                 pw=new PrintWriter(osw,true);
@@ -90,7 +90,7 @@ public class RegistService {
                 }
             }catch(Exception e){
             }finally{
-                System.out.println(host+"ÒÑÍê³É×¢²á");
+                System.out.println(host+"å·²å®Œæˆæ³¨å†Œ");
                 try{
                     socket.close();
                 }catch(Exception e2){

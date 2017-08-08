@@ -23,13 +23,13 @@ public class LoginService{
         try{
             server=new ServerSocket(5001);
         }catch(Exception e){
-            System.out.println("·şÎñ¶Ë³õÊ¼»¯Ê§°Ü£¡");
+            System.out.println("æœåŠ¡ç«¯åˆå§‹åŒ–å¤±è´¥ï¼");
             throw e;
         }
     }
     public void start() throws Exception{
         try{
-            System.out.print("µÇÂ¼ÑéÖ¤·şÎñÒÑÆô¶¯. ");
+            System.out.print("ç™»å½•éªŒè¯æœåŠ¡å·²å¯åŠ¨. ");
             for(int i=0;i*1000<5000;i++){
                 System.out.print(". ");
                 Thread.sleep(i*500)	;
@@ -42,17 +42,17 @@ public class LoginService{
                 t.start();
             }
         }catch(Exception e){
-            System.out.println("·şÎñÆ÷ÔËĞĞÊ§°Ü£¡");
+            System.out.println("æœåŠ¡å™¨è¿è¡Œå¤±è´¥ï¼");
             throw e;
         }
     }
     public static void main(String[] args) {
         try{
-            //Í¨ĞÅ·şÎñ
+            //é€šä¿¡æœåŠ¡
             LoginService server=new LoginService();
             server.start();
         }catch(Exception e){
-            System.out.println("·şÎñ¶ËÆô¶¯Ê§°Ü£¡");
+            System.out.println("æœåŠ¡ç«¯å¯åŠ¨å¤±è´¥ï¼");
             e.printStackTrace();
         }
     }
@@ -66,7 +66,7 @@ public class LoginService{
         }
         public void run() {
             try{
-                System.out.println(host+"ÇëÇóÑéÖ¤");
+                System.out.println(host+"è¯·æ±‚éªŒè¯");
 
                 OutputStream out=socket.getOutputStream();
                 OutputStreamWriter osw=new OutputStreamWriter(out,"UTF-8");
@@ -86,7 +86,7 @@ public class LoginService{
                 }
             }catch(Exception e){
             }finally{
-                System.out.println(host+"ÒÑÍê³ÉÑéÖ¤");
+                System.out.println(host+"å·²å®ŒæˆéªŒè¯");
                 try{
                     socket.close();
                 }catch(Exception e2){
@@ -101,8 +101,8 @@ public class LoginService{
             if(!check(name,password)){
                 pw.println("wrong password");
             }else{
-                pw.println("ok");//µÇÂ½³É¹¦·µ»Ø"ok"
-                //½«nameÌí¼Óµ½ÔÚÏßÓÃ»§Êı¾İÖĞ£¬Êı¾İ¿â´¦ÀíÊı¾İ¸üºÃ
+                pw.println("ok");//ç™»é™†æˆåŠŸè¿”å›"ok"
+                //å°†nameæ·»åŠ åˆ°åœ¨çº¿ç”¨æˆ·æ•°æ®ä¸­ï¼Œæ•°æ®åº“å¤„ç†æ•°æ®æ›´å¥½
 //                    addData(name);
             }
         }
@@ -110,7 +110,7 @@ public class LoginService{
 //	private void addData(String name) {
 
     //	}
-    //·ÃÎÊÎÄ¼ş
+    //è®¿é—®æ–‡ä»¶
     public boolean check(String name) throws IOException {
         FileInputStream fis=new FileInputStream("user.txt");
         InputStreamReader isr=new InputStreamReader(fis);

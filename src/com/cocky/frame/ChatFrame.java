@@ -54,16 +54,16 @@ public class ChatFrame {
 		userTable.setEditable(false);
 		try {
 			Socket socket1=new Socket(IP,5003);
-			//????NAME
+			//获取NAME
 			OutputStream out=socket1.getOutputStream();
 			OutputStreamWriter osw=new OutputStreamWriter(out,"UTF-8");
 			pw=new PrintWriter(osw,true);
 			pw.println("+"+name);
 
-			//??????????
+			//获取在线列表
 			BufferedReader br=new BufferedReader(new InputStreamReader(socket1.getInputStream(),"UTF-8"));
 			String line = br.readLine();
-			System.out.println("���ص��б���Ϣ"+br.readLine());
+			System.out.println("在线列表串："+line);
 			if("wrong".equals(line) || line == null){
 					userTable.setText("                 List refresh failure!");
 				}else {
@@ -73,7 +73,7 @@ public class ChatFrame {
 				}
 			}
 		}catch (Exception e){
-			System.out.println("�б�ˢ��ʧ��");
+			System.out.println("在线列表加载失败");
 			userTable.setText("                 List refresh failure!");
 		}finally {
 			pw.close();
@@ -81,7 +81,7 @@ public class ChatFrame {
 		}
 
 		showText=new JTextArea(21,17);//(20,35)
-		showText.setLineWrap(true);//??????��????????????????????
+		showText.setLineWrap(true);//??????��????????????????????
 		showText.setEditable(false);//???????????
 		message=new JTextField(17);
 		message.addKeyListener(new KeyAdapter()  {	//???????ENTER
@@ -158,7 +158,7 @@ public class ChatFrame {
 						showText.append(str+"\n");
 				}				
 			}catch(Exception e){
-				JOptionPane.showMessageDialog(null, "????????????????","????", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "读取消息列表失败","失败信息", JOptionPane.ERROR_MESSAGE);
 				e.printStackTrace();
 			}
 		}

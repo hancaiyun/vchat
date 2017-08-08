@@ -38,7 +38,7 @@ public class RegisterFrame {
 	private Checkbox female;
 	private JLabel place;
 	private JComboBox loc;
-	
+
 	private JLabel title;
 	private JPasswordField pwd;
 	private JPasswordField pwdcg;
@@ -48,31 +48,31 @@ public class RegisterFrame {
 	private PrintWriter pw;
 	public  RegisterFrame(String ip){
 		this.IP=ip;
-//    	IP="10.65.2.168";//·şÎñÆ÷IP
+//    	IP="10.65.2.168";//æœåŠ¡å™¨IP
 //    	IP="119.97.6.248";
-    	Port=5002;//·şÎñ¶Ë¿ÚºÅ
-    	title=new JLabel("»¶Ó­À´µ½×¢²á½çÃæ");
-    	userName=new JLabel(" ÄúµÄÓÃ»§Ãû        *");
-    	name=new JTextField(10);
-    	passWord=new JLabel("ÇëÊäÈëÄúµÄÃÜÂë*");
-    	pwd=new JPasswordField(10);
-    	passWordConfig=new JLabel("  ÇëÈ·ÈÏÄúµÄÃÜÂë*");
-    	gender=new JLabel("ĞÔ±ğ*");
-    	male=new Checkbox(" ÄĞ ");
-    	female=new Checkbox(" Å® ");
-    	
-    	place=new JLabel("³ÇÊĞ *");
-    	String []str={"¹ãÖİ","±±¾©","ÉÏº£","ÉîÛÚ","Îäºº","Õã½­","¶«İ¸","ÖØÇì","ÔÆÄÏ","ÆäËü"};
-    	loc=new JComboBox(str);
-    	pwdcg=new JPasswordField(10);
-    	
-    	new JLabel("ÑéÖ¤Âë*");
-    	new JTextField(4);
-    	hand=new JButton("Ìá½»");
-    	back=new JButton("·µ»Ø");
-    	init();
-    	addEvent();
-     }
+		Port=5002;//æœåŠ¡ç«¯å£å·
+		title=new JLabel("æ¬¢è¿æ¥åˆ°æ³¨å†Œç•Œé¢");
+		userName=new JLabel(" æ‚¨çš„ç”¨æˆ·å        *");
+		name=new JTextField(10);
+		passWord=new JLabel("è¯·è¾“å…¥æ‚¨çš„å¯†ç *");
+		pwd=new JPasswordField(10);
+		passWordConfig=new JLabel("  è¯·ç¡®è®¤æ‚¨çš„å¯†ç *");
+		gender=new JLabel("æ€§åˆ«*");
+		male=new Checkbox(" ç”· ");
+		female=new Checkbox(" å¥³ ");
+
+		place=new JLabel("åŸå¸‚ *");
+		String []str={"å¹¿å·","åŒ—äº¬","ä¸Šæµ·","æ·±åœ³","æ­¦æ±‰","æµ™æ±Ÿ","ä¸œè","é‡åº†","äº‘å—","å…¶å®ƒ"};
+		loc=new JComboBox(str);
+		pwdcg=new JPasswordField(10);
+
+		new JLabel("éªŒè¯ç *");
+		new JTextField(4);
+		hand=new JButton("æäº¤");
+		back=new JButton("è¿”å›");
+		init();
+		addEvent();
+	}
 	private void addEvent() {
 		hand.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -81,42 +81,42 @@ public class RegisterFrame {
 				un=new String(name.getText());
 				pd= new String(pwd.getPassword());
 				if(un.equals("")){
-					JOptionPane.showMessageDialog(jf, "ÓÃ»§Ãû²»ÄÜÎª¿Õ!");
+					JOptionPane.showMessageDialog(jf, "ç”¨æˆ·åä¸èƒ½ä¸ºç©º!");
 				}else if(p1.equals("")||p2.equals("")){
-					JOptionPane.showMessageDialog(jf, "ÃÜÂë²»ÄÜÎª¿Õ!");
+					JOptionPane.showMessageDialog(jf, "å¯†ç ä¸èƒ½ä¸ºç©º!");
 				}else if(!p1.equals(p2)){
-					JOptionPane.showMessageDialog(jf, "Á½´ÎÃÜÂë²»Ò»Ñù!");
+					JOptionPane.showMessageDialog(jf, "ä¸¤æ¬¡å¯†ç ä¸ä¸€æ ·!");
 					pwd.setText(null);
 					pwdcg.setText(null);
 				}
 				else{
-	                 //½«ÓÃ»§Êı¾İ´æÈëÊı¾İ¿âµÄ·½·¨	
-	                try {
-	                	socket=new Socket(IP,Port);
-						//·¢ËÍNAMEºÍPASSWORD
+					//å°†ç”¨æˆ·æ•°æ®å­˜å…¥æ•°æ®åº“çš„æ–¹æ³•
+					try {
+						socket=new Socket(IP,Port);
+						//å‘é€NAMEå’ŒPASSWORD
 						OutputStream out=socket.getOutputStream();
 						OutputStreamWriter osw=new OutputStreamWriter(out,"UTF-8");
 						pw=new PrintWriter(osw,true);
 						pw.println(un+";"+pd);
-						//½ÓÊÕ×¢²á½á¹ûĞÅÏ¢
+						//æ¥æ”¶æ³¨å†Œç»“æœä¿¡æ¯
 						BufferedReader br=new BufferedReader(new InputStreamReader(socket.getInputStream(),"UTF-8"));
 						String mes=null;
 						while((mes=br.readLine())!=null){
 							if(mes.equals("ok")){
-							   	 JOptionPane.showMessageDialog(jf, "×¢²á³É¹¦!ÂíÉÏµÇÂ½£¿");
-							     jf.dispose();
-				                 new Login();
+								JOptionPane.showMessageDialog(jf, "æ³¨å†ŒæˆåŠŸ!é©¬ä¸Šç™»é™†ï¼Ÿ");
+								jf.dispose();
+								new Login();
 							}else{
-								 JOptionPane.showMessageDialog(null, "×¢²áÊ§°Ü£¬ÓÃ»§ÃûÒÑ±»Ê¹ÓÃ","´íÎó", JOptionPane.ERROR_MESSAGE);
-									pwd.setText(null);
-									pwdcg.setText(null);
+								JOptionPane.showMessageDialog(null, "æ³¨å†Œå¤±è´¥ï¼Œç”¨æˆ·åå·²è¢«ä½¿ç”¨","é”™è¯¯", JOptionPane.ERROR_MESSAGE);
+								pwd.setText(null);
+								pwdcg.setText(null);
 							}
 						}
 					} catch (UnknownHostException e1) {
-						JOptionPane.showMessageDialog(null,"ÎŞ·¨Á¬½Ó·şÎñÆ÷,Çë·µ»ØµÇÂ½Ò³ÃæÌîĞ´ÕıÈ·µÄIP");
+						JOptionPane.showMessageDialog(null,"æ— æ³•è¿æ¥æœåŠ¡å™¨,è¯·è¿”å›ç™»é™†é¡µé¢å¡«å†™æ­£ç¡®çš„IP");
 						e1.printStackTrace();
 					} catch (IOException e2) {
-						JOptionPane.showMessageDialog(null, "×¢²áÊ§°Ü","´íÎó", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(null, "æ³¨å†Œå¤±è´¥","é”™è¯¯", JOptionPane.ERROR_MESSAGE);
 						e2.printStackTrace();
 					}
 				}
@@ -126,12 +126,12 @@ public class RegisterFrame {
 			public void actionPerformed(ActionEvent e) {
 				new Login();
 				jf.dispose();
-					}
-			});
+			}
+		});
 	}
 	private void init() {
-		 jf=new JFrame();
-		 
+		jf=new JFrame();
+
 		JPanel jp1=new JPanel(new FlowLayout());
 		jp1.add(userName);
 		jp1.add(name);
@@ -140,28 +140,28 @@ public class RegisterFrame {
 		jp2.add(passWord);
 		jp2.add(pwd);
 
-		
+
 		JPanel jp3=new JPanel(new FlowLayout());
 		jp3.add(passWordConfig);
 		jp3.add(pwdcg);
-		
+
 		JPanel jp6=new JPanel(new FlowLayout());
 		jp6.add(gender);//
 		jp6.add(male);
 		jp6.add(female);
-		
+
 		JPanel jp7=new JPanel(new FlowLayout());
 		jp7.add(place);//
 		jp7.add(loc);
-				
+
 		JPanel jp4=new JPanel(new FlowLayout());
 		jp4.add(hand);
 		jp4.add(back);
 		JPanel jp5=new JPanel(new FlowLayout());
 		jp5.add(title);
-		
+
 		jf.setIconImage(Toolkit.getDefaultToolkit().createImage(RegisterFrame.class.getResource("5.png")));
-		jf.setLayout(new GridLayout(7, 1));//ÅÅ°æ
+		jf.setLayout(new GridLayout(7, 1));//æ’ç‰ˆ
 		jf.add(jp5);
 		jf.add(jp1);
 		jf.add(jp2);
@@ -169,15 +169,15 @@ public class RegisterFrame {
 		jf.add(jp6);
 		jf.add(jp7);
 		jf.add(jp4);
-		
-	
-		jf.setTitle("VChat-1.6.1×¢²áÒ³Ãæ");
+
+
+		jf.setTitle("VChat-1.6.1æ³¨å†Œé¡µé¢");
 		jf.setVisible(true);
 		jf.setSize(350,500);
 		jf.setResizable(false);
 		jf.setLocationRelativeTo(null);
-		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
+		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-	
-	//²âÊÔ
+
+	//æµ‹è¯•
 }

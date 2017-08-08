@@ -1,7 +1,7 @@
 package com.cocky.service;
 
 /**
- * 总控
+ * 鎬绘帶
  * Created by NiceH on 2017/6/8.
  */
 public class Service {
@@ -16,9 +16,9 @@ public class Service {
             loginService.start();
             RegistService registService = new RegistService();
             registService.start();
-            System.out.print("启动成功");
+            System.out.print("鍚姩鎴愬姛");
         }catch (Exception e){
-            System.out.print("启动失败");
+            System.out.print("鍚姩澶辫触");
         }
 
     }
