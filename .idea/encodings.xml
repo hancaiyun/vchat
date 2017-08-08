@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/port.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/cocky/frame/ChatFrame.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/cocky/frame/Login.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/cocky/frame/RegisterFrame.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/cocky/service/ChatService.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/cocky/service/ListService.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/cocky/service/LoginService.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/cocky/service/RegistService.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/cocky/service/Service.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/user.txt" charset="GBK" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>
