@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="996836da-90bf-4547-9f48-d7868abf2fe2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="996836da-90bf-4547-9f48-d7868abf2fe2" name="Default" comment="" />
     <ignored path="Vchat1.6.1.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/bin/" />
@@ -56,8 +54,8 @@
       <file leaf-file-name="LoginService.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/cocky/service/LoginService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.74614066">
-              <caret line="145" column="5" selection-start-line="145" selection-start-column="5" selection-end-line="145" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.8113208">
+              <caret line="147" column="0" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -104,6 +102,11 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -785,7 +788,7 @@
       <workItem from="1500023371500" duration="633000" />
       <workItem from="1500360473821" duration="1146000" />
       <workItem from="1502172781971" duration="2100000" />
-      <workItem from="1502175576422" duration="208000" />
+      <workItem from="1502175576422" duration="855000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1496652105485</created>
@@ -797,7 +800,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43007000" />
+    <option name="totallyTimeSpent" value="43654000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1370" height="772" extended-state="0" />
@@ -1316,8 +1319,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/cocky/service/LoginService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.74614066">
-          <caret line="145" column="5" selection-start-line="145" selection-start-column="5" selection-end-line="145" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.8113208">
+          <caret line="147" column="0" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
           <folding />
         </state>
       </provider>
